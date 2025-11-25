@@ -6,19 +6,37 @@ const ExperienceSection = () => {
       id: 1,
       company: "LC Studio",
       role: "Full-Stack Developer Intern",
-      period: "Current Mission",
+      period: "June 2024 - Present",
       status: "active",
-      description: "Developing modern web applications with cutting-edge technologies. Building responsive UIs and robust backend systems.",
-      technologies: ["React", "Node.js", "TypeScript", "PostgreSQL"],
+      description: "Developing modern web applications using React and Node.js. Learning to build responsive UIs and work with backend systems. Collaborating with the team on real client projects.",
+      technologies: ["React", "Node.js", "JavaScript", "HTML/CSS"],
     },
     {
       id: 2,
       company: "Cock N Bull",
-      role: "Web Developer",
-      period: "Mission Complete",
+      role: "Web Developer (Full-Time)",
+      period: "December 2023 - February 2024",
       status: "complete",
-      description: "Successfully deployed e-commerce solutions and customer-facing web applications. Implemented responsive designs and optimized performance.",
+      description: "Worked on e-commerce website maintenance and updates. Gained hands-on experience with WordPress, PHP, and front-end development. Learned to troubleshoot and implement client requirements.",
       technologies: ["WordPress", "PHP", "JavaScript", "CSS"],
+    },
+    {
+      id: 3,
+      company: "Life Choices Academy",
+      role: "Full-Stack Development Student",
+      period: "September 2023 - Present",
+      status: "complete",
+      description: "Completed intensive coding bootcamp focused on full-stack web development. Gained foundational knowledge in programming logic, web technologies, and modern development practices.",
+      technologies: ["Python", "HTML", "CSS", "JavaScript"],
+    },
+    {
+      id: 4,
+      company: "Claremon High School",
+      role: "NCC Certificate",
+      period: "Completed",
+      status: "complete",
+      description: "Achieved National Senior Certificate, building a strong educational foundation and developing problem-solving skills that translate well into programming and logical thinking.",
+      technologies: ["Academic Foundation"],
     },
   ];
 
@@ -116,7 +134,7 @@ const ExperienceSection = () => {
                         <div className={`text-2xl font-bold ${
                           mission.status === 'active' ? 'text-tactical-gold' : 'text-tactical-blue'
                         }`}>
-                          {mission.status === 'active' ? '85%' : '100%'}
+                          {mission.status === 'active' ? '75%' : '100%'}
                         </div>
                         <div className="text-xs text-muted-foreground uppercase tracking-wider">
                           Progress
@@ -136,7 +154,7 @@ const ExperienceSection = () => {
                         <div className={`text-2xl font-bold ${
                           mission.status === 'active' ? 'text-tactical-gold' : 'text-tactical-blue'
                         }`}>
-                          A+
+                          {mission.status === 'active' ? 'A' : 'A+'}
                         </div>
                         <div className="text-xs text-muted-foreground uppercase tracking-wider">
                           Rating
