@@ -29,12 +29,13 @@ const AboutSection = () => {
             </div>
             
             <p className="text-muted-foreground leading-relaxed text-lg">
-              I am a <span className="text-foreground font-semibold">Full-Stack Developer</span> with a tactical mindset. 
-              I view every project as a mission requiring strategy, precision, and adaptability.
+              I am a <span className="text-foreground font-semibold">Full-Stack Developer</span> with a tactical approach. 
+              I view every project as a mission that requires strategy, precision, and continuous learning.
             </p>
             
             <p className="text-muted-foreground leading-relaxed text-lg">
-              Just as in a Battle Royale, I analyze the environment, adapt to new challenges, and secure the win. 
+              Just as in a Battle Royale, I analyze the environment, adapt to new challenges, and work towards the objective. 
+              I'm building my skills through real-world projects and staying sharp by learning new technologies.
             </p>
             
             <p className="text-muted-foreground leading-relaxed text-lg">

@@ -70,10 +70,10 @@ const HeroSection = () => {
                 {/* Status indicators */}
                 <div className="absolute top-4 right-4 space-y-2">
                   <div className="glass-panel px-3 py-1 text-xs uppercase tracking-wider border-l-2 border-tactical-blue">
-                    Lvl 99
+                    In Training
                   </div>
                   <div className="glass-panel px-3 py-1 text-xs uppercase tracking-wider border-l-2 border-tactical-gold">
-                    Elite Rank
+                    Rising Dev
                   </div>
                 </div>
 

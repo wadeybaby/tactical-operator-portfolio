@@ -2,10 +2,10 @@ import { Code2, Wrench } from "lucide-react";
 
 const SkillsSection = () => {
   const primaryWeapons = [
-    { name: "Python", level: "Expert", color: "tactical-blue" },
-    { name: "JavaScript", level: "Expert", color: "tactical-gold" },
-    { name: "HTML", level: "Expert", color: "tactical-blue" },
-    { name: "CSS", level: "Expert", color: "tactical-gold" },
+    { name: "Python", level: "Proficient", color: "tactical-blue" },
+    { name: "JavaScript", level: "Proficient", color: "tactical-gold" },
+    { name: "HTML", level: "Advanced", color: "tactical-blue" },
+    { name: "CSS", level: "Advanced", color: "tactical-gold" },
   ];
 
   const tacticalGear = [
