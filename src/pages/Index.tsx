@@ -1,12 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
+import AchievementsSection from "@/components/AchievementsSection";
+import ExperienceSection from "@/components/ExperienceSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <AchievementsSection />
+      <ExperienceSection />
+      <ContactSection />
+      
+      {/* Footer */}
+      <footer className="relative py-8 px-4 border-t border-tactical-border">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="glass-panel inline-block px-6 py-3">
+            <p className="text-sm text-muted-foreground uppercase tracking-wider">
+              Wade Britz © 2024 | Full-Stack Developer | All Systems Operational
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
