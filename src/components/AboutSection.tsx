@@ -1,8 +1,8 @@
-import { Target, Brain, Crosshair } from "lucide-react";
+import { Palette, Brain, Crosshair } from "lucide-react";
 
 const AboutSection = () => {
   const stats = [
-    { name: "Agility", value: 85, icon: Target, label: "Hiking & Outdoors" },
+    { name: "Creativity", value: 88, icon: Palette, label: "Artistic & Drawing" },
     { name: "Intellect", value: 90, icon: Brain, label: "Anime & Lore" },
     { name: "Precision", value: 95, icon: Crosshair, label: "FPS Gaming" },
   ];
@@ -39,8 +39,8 @@ const AboutSection = () => {
             </p>
             
             <p className="text-muted-foreground leading-relaxed text-lg">
-              When I'm off-duty, I recharge by conquering hiking trails, analyzing anime storylines, 
-              or grinding rank in competitive FPS games.
+              When I'm off-duty, I recharge by exploring my artistic side through drawing, analyzing anime storylines, 
+              or grinding rank in competitive FPS games. I'm always up for an adventure and eager to take on new challenges.
             </p>
 
             <div className="pt-4 border-t border-tactical-border">
