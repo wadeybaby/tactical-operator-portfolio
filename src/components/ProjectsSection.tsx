@@ -39,7 +39,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section className="relative py-20 px-4 border-t border-tactical-border">
+    <section id="projects" className="relative py-20 px-4 border-t border-tactical-border">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-tactical-dark/50 to-background pointer-events-none" />
       <div className="scan-line" />

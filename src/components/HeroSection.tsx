@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import heroPortrait from "@/assets/hero-portrait.jpg";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const HeroSection = () => {
   const scrollToProjects = () => {
@@ -7,7 +8,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
       {/* Background grid effect */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       
@@ -44,14 +45,42 @@ const HeroSection = () => {
               Tactical approach to modern web development. Precision-driven code. Strategic problem solving.
             </p>
 
-            <Button 
-              onClick={scrollToProjects}
-              size="lg"
-              className="relative group uppercase tracking-wider font-semibold text-base px-8 py-6 overflow-hidden bg-gradient-to-r from-tactical-blue to-tactical-gold hover:scale-105 transition-all duration-300"
-            >
-              <span className="relative z-10">View Projects</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-tactical-gold to-tactical-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <Button 
+                onClick={scrollToProjects}
+                size="lg"
+                className="relative group uppercase tracking-wider font-semibold text-base px-8 py-6 overflow-hidden bg-gradient-to-r from-tactical-blue to-tactical-gold hover:scale-105 transition-all duration-300"
+              >
+                <span className="relative z-10">View Projects</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-tactical-gold to-tactical-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://github.com/wadebritz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel p-3 border border-tactical-border hover:border-tactical-blue transition-all hover:scale-110 group"
+                >
+                  <Github className="w-5 h-5 text-muted-foreground group-hover:text-tactical-blue transition-colors" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/wade-britz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel p-3 border border-tactical-border hover:border-tactical-blue transition-all hover:scale-110 group"
+                >
+                  <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-tactical-blue transition-colors" />
+                </a>
+                <a
+                  href="mailto:wade.britz@example.com"
+                  className="glass-panel p-3 border border-tactical-border hover:border-tactical-gold transition-all hover:scale-110 group"
+                >
+                  <Mail className="w-5 h-5 text-muted-foreground group-hover:text-tactical-gold transition-colors" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Right side - Character Portrait */}

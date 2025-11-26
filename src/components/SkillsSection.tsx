@@ -16,7 +16,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="relative py-24 px-4">
+    <section id="skills" className="relative py-24 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 hud-corner p-6">
