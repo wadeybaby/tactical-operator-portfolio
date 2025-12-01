@@ -47,14 +47,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "tactical-blue": "hsl(var(--tactical-blue))",
-        "tactical-gold": "hsl(var(--tactical-gold))",
-        "tactical-panel": "hsl(var(--tactical-panel))",
-        "tactical-border": "hsl(var(--tactical-border))",
-        "hud-scan": "hsl(var(--hud-scan))",
-      },
-      fontFamily: {
-        tactical: ["Rajdhani", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -82,9 +74,6 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-border": "pulse-border 2s ease-in-out infinite",
-        "glitch": "glitch 0.3s cubic-bezier(.25, .46, .45, .94) both",
-        "scan": "scan 3s linear infinite",
       },
     },
   },

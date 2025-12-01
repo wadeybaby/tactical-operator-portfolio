@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,6 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
 
 const ContactSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,23 +20,20 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Form validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
-        title: "Transmission Failed",
-        description: "All fields are required for secure transmission.",
+        title: "Missing Information",
+        description: "Please fill in all fields.",
         variant: "destructive",
       });
       return;
     }
 
-    // Simulate sending
     toast({
-      title: "Intel Received",
-      description: "Your message has been transmitted successfully. Stand by for response.",
+      title: "Message Sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
     });
 
-    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -45,121 +46,82 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="relative py-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 hud-corner p-6">
-          <div className="inline-block glass-panel px-4 py-2 mb-4 text-sm uppercase tracking-widest border-l-2 border-tactical-gold">
-            Encrypted Channel
+      <div className="max-w-2xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+            Get In Touch
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">
-            FIELD <span className="text-tactical-gold">COMMS</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Contact Me
           </h2>
-          <p className="text-muted-foreground mt-4 uppercase tracking-wider text-sm">
-            Secure Communication Protocol Active
+          <p className="text-muted-foreground text-lg">
+            Have a project in mind? Let's work together.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Contact Form */}
-        <div className="glass-panel hud-corner p-8 scan-line">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Transmission Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-tactical-border">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-tactical-gold animate-pulse" />
-                <span className="text-sm uppercase tracking-wider text-muted-foreground">
-                  Channel Status: Online
-                </span>
-              </div>
-              <span className="text-xs text-tactical-gold uppercase tracking-wider font-semibold">
-                Encrypted
-              </span>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-8 space-y-6">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                Name
+              </label>
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                className="bg-background"
+              />
             </div>
 
-            {/* Form Fields */}
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm uppercase tracking-wider text-muted-foreground font-semibold">
-                  Operator Name
-                </label>
-                <Input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your callsign"
-                  className="glass-panel border-tactical-border focus:border-tactical-blue transition-colors uppercase tracking-wide"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm uppercase tracking-wider text-muted-foreground font-semibold">
-                  Communication Line
-                </label>
-                <Input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your.email@domain.com"
-                  className="glass-panel border-tactical-border focus:border-tactical-blue transition-colors"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm uppercase tracking-wider text-muted-foreground font-semibold">
-                  Message Content
-                </label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Type your encrypted message here..."
-                  rows={6}
-                  className="glass-panel border-tactical-border focus:border-tactical-blue transition-colors resize-none"
-                />
-              </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                Email
+              </label>
+              <Input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your.email@example.com"
+                className="bg-background"
+              />
             </div>
 
-            {/* Transmission Stats */}
-            <div className="grid grid-cols-3 gap-4 py-4 border-y border-tactical-border">
-              <div className="text-center">
-                <div className="text-tactical-blue text-lg font-bold">
-                  {formData.message.length}
-                </div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                  Characters
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-tactical-gold text-lg font-bold">256-bit</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                  Encryption
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-tactical-blue text-lg font-bold">&lt;1s</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                  Latency
-                </div>
-              </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                Message
+              </label>
+              <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project..."
+                rows={6}
+                className="bg-background resize-none"
+              />
             </div>
 
-            {/* Submit Button */}
             <Button
               type="submit"
               size="lg"
-              className="w-full uppercase tracking-wider font-semibold text-base py-6 bg-gradient-to-r from-tactical-gold to-tactical-blue hover:scale-105 transition-all duration-300 group"
+              className="w-full group"
             >
-              <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-              Send Intel
+              Send Message
+              <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>
-        </div>
-
-        {/* Footer Info */}
-        <div className="mt-8 text-center text-sm text-muted-foreground uppercase tracking-wider">
-          <p>Response Time: 24-48 Hours</p>
-          <p className="mt-2">All communications are monitored and encrypted</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

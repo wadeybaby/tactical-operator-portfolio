@@ -1,120 +1,103 @@
-import { Code2, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Code2, Database, Globe, Wrench } from "lucide-react";
 
 const SkillsSection = () => {
-  const primaryWeapons = [
-    { name: "Python", level: "Proficient", color: "tactical-blue" },
-    { name: "JavaScript", level: "Proficient", color: "tactical-gold" },
-    { name: "HTML", level: "Advanced", color: "tactical-blue" },
-    { name: "CSS", level: "Advanced", color: "tactical-gold" },
-  ];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const tacticalGear = [
-    { name: "Node.js", type: "Runtime", color: "tactical-blue" },
-    { name: "Vue.js", type: "Framework", color: "tactical-gold" },
-    { name: "PHP", type: "Backend", color: "tactical-blue" },
-    { name: "WordPress", type: "CMS", color: "tactical-gold" },
+  const skillCategories = [
+    {
+      title: "Frontend",
+      icon: Globe,
+      skills: [
+        { name: "HTML & CSS", level: 90 },
+        { name: "JavaScript", level: 85 },
+        { name: "Vue.js", level: 75 },
+      ]
+    },
+    {
+      title: "Backend",
+      icon: Database,
+      skills: [
+        { name: "Python", level: 85 },
+        { name: "Node.js", level: 80 },
+        { name: "PHP", level: 75 },
+      ]
+    },
+    {
+      title: "Tools",
+      icon: Wrench,
+      skills: [
+        { name: "Git", level: 85 },
+        { name: "WordPress", level: 80 },
+        { name: "VS Code", level: 90 },
+      ]
+    },
   ];
 
   return (
-    <section id="skills" className="relative py-24 px-4">
+    <section id="skills" className="relative py-24 px-4 bg-card/30">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 hud-corner p-6">
-          <div className="inline-block glass-panel px-4 py-2 mb-4 text-sm uppercase tracking-widest border-l-2 border-tactical-gold">
-            Arsenal Overview
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+            Tech Stack
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">
-            THE <span className="text-tactical-gold">LOADOUT</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Skills & Technologies
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Primary Weapons */}
-          <div className="glass-panel hud-corner p-8 scan-line">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 glass-panel rounded-sm border border-tactical-blue">
-                <Code2 className="w-6 h-6 text-tactical-blue" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold uppercase tracking-wide">Primary Weapons</h3>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Main Languages</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {primaryWeapons.map((weapon, index) => (
-                <div 
-                  key={weapon.name}
-                  className="group glass-panel p-4 hover:border-tactical-blue transition-all duration-300 cursor-pointer"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tactical-blue animate-pulse" />
-                      <span className="font-semibold uppercase tracking-wide">{weapon.name}</span>
-                    </div>
-                    <span className={`text-${weapon.color} text-sm font-semibold uppercase tracking-wider`}>
-                      {weapon.level}
-                    </span>
+        <div className="grid md:grid-cols-3 gap-8">
+          {skillCategories.map((category, categoryIndex) => {
+            const Icon = category.icon;
+            return (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                className="bg-card border border-border rounded-2xl p-8 card-hover"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <div className="h-1 bg-muted rounded-full overflow-hidden">
-                    <div className={`h-full bg-gradient-to-r from-${weapon.color} to-tactical-gold w-full transition-all duration-1000 group-hover:animate-pulse`} />
-                  </div>
+                  <h3 className="text-xl font-semibold">{category.title}</h3>
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-6 pt-6 border-t border-tactical-border">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground uppercase tracking-wider">Weapons Status</span>
-                <span className="text-tactical-blue font-semibold">All Systems Go</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Tactical Gear */}
-          <div className="glass-panel hud-corner p-8 scan-line">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 glass-panel rounded-sm border border-tactical-gold">
-                <Wrench className="w-6 h-6 text-tactical-gold" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold uppercase tracking-wide">Tactical Gear</h3>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Frameworks & Tools</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {tacticalGear.map((gear, index) => (
-                <div 
-                  key={gear.name}
-                  className="group glass-panel p-4 hover:border-tactical-gold transition-all duration-300 cursor-pointer text-center"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="space-y-2">
-                    <div className="w-12 h-12 mx-auto glass-panel rounded-sm border border-tactical-border group-hover:border-tactical-gold transition-colors duration-300 flex items-center justify-center">
-                      <div className={`w-6 h-6 rounded-full bg-${gear.color}/20 group-hover:bg-${gear.color}/40 transition-colors duration-300`} />
-                    </div>
-                    <div>
-                      <div className="font-semibold uppercase tracking-wide text-sm">
-                        {gear.name}
+                <div className="space-y-6">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skill.name} className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-foreground">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
                       </div>
-                      <div className={`text-xs text-${gear.color} uppercase tracking-wider font-semibold`}>
-                        {gear.type}
+                      <div className="relative h-2 bg-secondary rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                          transition={{ 
+                            duration: 1, 
+                            delay: 0.8 + categoryIndex * 0.1 + skillIndex * 0.1,
+                            ease: "easeOut" 
+                          }}
+                          className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-end))]"
+                        />
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-6 pt-6 border-t border-tactical-border">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground uppercase tracking-wider">Equipment Status</span>
-                <span className="text-tactical-gold font-semibold">Combat Ready</span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
