@@ -8,47 +8,40 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Tactical Theme - Dark Military UI */
-    --background: 220 30% 8%;
-    --foreground: 180 20% 92%;
+    /* Modern Professional Theme - Clean Dark Mode */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 25% 12%;
-    --card-foreground: 180 20% 92%;
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 180 20% 92%;
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 200 90% 50%;
-    --primary-foreground: 220 30% 8%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 45 90% 55%;
-    --secondary-foreground: 220 30% 8%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 25% 18%;
-    --muted-foreground: 180 10% 60%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 200 90% 50%;
-    --accent-foreground: 220 30% 8%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 180 20% 92%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 200 40% 25%;
-    --input: 220 25% 15%;
-    --ring: 200 90% 50%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
-    /* Tactical specific colors */
-    --tactical-blue: 200 90% 50%;
-    --tactical-gold: 45 90% 55%;
-    --tactical-panel: 220 25% 12%;
-    --tactical-border: 200 40% 25%;
-    --hud-scan: 200 100% 60%;
-    
-    /* Glassmorphism */
-    --glass-bg: 220 25% 12% / 0.7;
-    --glass-border: 200 40% 30% / 0.5;
+    /* Professional accent colors */
+    --accent-gradient-start: 217 91% 60%;
+    --accent-gradient-end: 262 83% 58%;
   }
 }
 
@@ -58,88 +51,17 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-tactical;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   }
 }
 
 @layer utilities {
-  .glass-panel {
-    @apply bg-tactical-panel/70 backdrop-blur-md border border-tactical-border;
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(var(--accent-gradient-end))];
   }
-  
-  .hud-corner {
-    position: relative;
-  }
-  
-  .hud-corner::before,
-  .hud-corner::after {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border: 2px solid hsl(var(--tactical-blue));
-  }
-  
-  .hud-corner::before {
-    top: -2px;
-    left: -2px;
-    border-right: none;
-    border-bottom: none;
-  }
-  
-  .hud-corner::after {
-    bottom: -2px;
-    right: -2px;
-    border-left: none;
-    border-top: none;
-  }
-  
-  .scan-line {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .scan-line::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--hud-scan)), transparent);
-    animation: scan 3s linear infinite;
-  }
-  
-  @keyframes scan {
-    to {
-      left: 100%;
-    }
-  }
-  
-  @keyframes pulse-border {
-    0%, 100% {
-      border-color: hsl(var(--tactical-blue) / 0.3);
-    }
-    50% {
-      border-color: hsl(var(--tactical-blue) / 0.8);
-    }
-  }
-  
-  @keyframes glitch {
-    0%, 100% {
-      transform: translate(0);
-    }
-    20% {
-      transform: translate(-2px, 2px);
-    }
-    40% {
-      transform: translate(-2px, -2px);
-    }
-    60% {
-      transform: translate(2px, 2px);
-    }
-    80% {
-      transform: translate(2px, -2px);
-    }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
   }
 }

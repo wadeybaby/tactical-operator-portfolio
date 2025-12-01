@@ -23,38 +23,39 @@ const Index = () => {
       <ContactSection />
       
       {/* Footer */}
-      <footer className="relative py-8 px-4 border-t border-tactical-border">
+      <footer className="relative py-8 px-4 border-t border-border bg-card/30">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="glass-panel px-6 py-3">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                Wade Britz © 2024 | Full-Stack Developer | All Systems Operational
-              </p>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              © 2024 Wade Britz. All rights reserved.
+            </p>
             
             {/* Social Links in Footer */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <a
                 href="https://github.com/wadebritz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-panel p-2 border border-tactical-border hover:border-tactical-blue transition-all hover:scale-110 group"
+                className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
+                aria-label="GitHub"
               >
-                <Github className="w-4 h-4 text-muted-foreground group-hover:text-tactical-blue transition-colors" />
+                <Github className="w-4 h-4" />
               </a>
               <a
                 href="https://linkedin.com/in/wade-britz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-panel p-2 border border-tactical-border hover:border-tactical-blue transition-all hover:scale-110 group"
+                className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="w-4 h-4 text-muted-foreground group-hover:text-tactical-blue transition-colors" />
+                <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="mailto:wade.britz@example.com"
-                className="glass-panel p-2 border border-tactical-border hover:border-tactical-gold transition-all hover:scale-110 group"
+                className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
+                aria-label="Email"
               >
-                <Mail className="w-4 h-4 text-muted-foreground group-hover:text-tactical-gold transition-colors" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
