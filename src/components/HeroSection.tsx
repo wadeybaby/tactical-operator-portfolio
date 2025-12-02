@@ -1,11 +1,40 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroPortrait from "@/assets/hero-portrait.jpg";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
 
 const HeroSection = () => {
-  const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+  const handleDownload = () => {
+    const resumeContent = `
+WADE BRITZ
+Full-Stack Developer
+
+CONTACT:
+Email: wade.britz@example.com
+LinkedIn: linkedin.com/in/wade-britz
+GitHub: github.com/wadebritz
+
+EXPERIENCE:
+- LC Studio (Intern) - June 2024 to Present
+- Cock N Bull - December 2023 to February 2024
+
+EDUCATION:
+- Life Choices Academy - September 2023 to Present
+- Claremont High School - National Senior Certificate
+
+SKILLS:
+Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
+    `.trim();
+
+    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Wade_Britz_Resume.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -41,12 +70,12 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center pt-4">
               <Button 
-                onClick={scrollToAbout}
+                onClick={handleDownload}
                 size="lg"
                 className="group"
               >
-                View My Work
-                <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
+                Download CV
+                <Download className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </Button>
 
               {/* Social Links */}
