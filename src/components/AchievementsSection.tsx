@@ -49,10 +49,10 @@ const AchievementsSection = () => {
           className="text-center mb-16"
         >
           <div className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
-            Milestones
+            Highlights
           </div>
           <h2 className="text-4xl md:text-5xl font-bold">
-            Achievements
+            Key Achievements
           </h2>
         </motion.div>
 

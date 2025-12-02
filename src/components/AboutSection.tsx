@@ -1,114 +1,51 @@
-import { Palette, Brain, Crosshair } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const AboutSection = () => {
-  const stats = [
-    { name: "Creativity", value: 88, icon: Palette, label: "Artistic & Drawing" },
-    { name: "Intellect", value: 90, icon: Brain, label: "Anime & Lore" },
-    { name: "Precision", value: 95, icon: Crosshair, label: "FPS Gaming" },
-  ];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="about" className="relative py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 hud-corner p-6">
-          <div className="inline-block glass-panel px-4 py-2 mb-4 text-sm uppercase tracking-widest border-l-2 border-tactical-blue">
-            Classified Information
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+            Introduction
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">
-            THE <span className="text-tactical-blue">DOSSIER</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            About Me
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Bio Text */}
-          <div className="glass-panel hud-corner p-8 space-y-6 scan-line">
-            <div className="flex items-center gap-2 text-tactical-gold uppercase tracking-wider text-sm font-semibold mb-4">
-              <div className="w-8 h-px bg-tactical-gold" />
-              <span>Personnel File</span>
-            </div>
-            
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              I am a <span className="text-foreground font-semibold">Full-Stack Developer</span> with a tactical approach. 
-              I view every project as a mission that requires strategy, precision, and continuous learning.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              Just as in a Battle Royale, I analyze the environment, adapt to new challenges, and work towards the objective. 
-              I'm building my skills through real-world projects and staying sharp by learning new technologies.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              When I'm off-duty, I recharge by exploring my artistic side through drawing, analyzing anime storylines, 
-              or grinding rank in competitive FPS games. I'm always up for an adventure and eager to take on new challenges.
-            </p>
-
-            <div className="pt-4 border-t border-tactical-border">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground uppercase tracking-wider">Clearance Level</span>
-                <span className="text-tactical-blue font-semibold">MAXIMUM</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats HUD */}
-          <div className="space-y-6">
-            <div className="glass-panel hud-corner p-8 scan-line">
-              <div className="flex items-center gap-2 text-tactical-gold uppercase tracking-wider text-sm font-semibold mb-6">
-                <div className="w-8 h-px bg-tactical-gold" />
-                <span>Attribute Analysis</span>
-              </div>
-
-              <div className="space-y-8">
-                {stats.map((stat) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={stat.name} className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 glass-panel rounded-sm border border-tactical-blue/50">
-                            <Icon className="w-4 h-4 text-tactical-blue" />
-                          </div>
-                          <div>
-                            <div className="font-semibold uppercase tracking-wide text-sm">
-                              {stat.name}
-                            </div>
-                            <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                              {stat.label}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-2xl font-bold text-tactical-blue">
-                          {stat.value}%
-                        </div>
-                      </div>
-                      
-                      <div className="relative h-2 bg-muted rounded-full overflow-hidden">
-                        <div 
-                          className="absolute inset-y-0 left-0 bg-gradient-to-r from-tactical-blue to-tactical-gold transition-all duration-1000 ease-out"
-                          style={{ width: `${stat.value}%` }}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
-                        </div>
-                        
-                        {/* Progress indicators */}
-                        <div className="absolute inset-0 flex justify-between px-1">
-                          {[...Array(5)].map((_, i) => (
-                            <div 
-                              key={i} 
-                              className="w-px h-full bg-background/50"
-                              style={{ opacity: i * 20 < stat.value ? 0.5 : 0.2 }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-card border border-border rounded-2xl p-8 md:p-12 space-y-6"
+        >
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            I am a <span className="text-foreground font-semibold">Full-Stack Developer</span> with a passion for creating modern, 
+            responsive web applications. I approach every project with dedication, precision, and a commitment to continuous learning.
+          </p>
+          
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Currently building my skills through hands-on experience at LC Studio, I focus on writing clean, 
+            maintainable code and staying current with the latest web technologies. I thrive on challenges and 
+            am always eager to take on new projects that push my abilities.
+          </p>
+          
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Outside of coding, I enjoy exploring my creative side through drawing, diving into compelling anime storylines, 
+            and staying sharp with competitive gaming. I'm always up for an adventure and eager to take on new challenges.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
