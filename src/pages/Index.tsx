@@ -6,7 +6,6 @@ import AchievementsSection from "@/components/AchievementsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
-import ResumeSection from "@/components/ResumeSection";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const Index = () => {
@@ -19,7 +18,6 @@ const Index = () => {
       <AchievementsSection />
       <ExperienceSection />
       <ProjectsSection />
-      <ResumeSection />
       <ContactSection />
       
       {/* Footer */}
