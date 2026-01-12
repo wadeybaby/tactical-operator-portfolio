@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://wadeybaby.github.io/",
+  "homepage": "https://wadeybaby.github.io/tactical-operator-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

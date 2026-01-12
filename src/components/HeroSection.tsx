@@ -8,7 +8,7 @@ const HeroSection = () => {
   const handleDownload = () => {
   const link = document.createElement('a');
   link.href = resumePDF;
-  link.download = 'Wade_Britz_Resume.pdf'; // The name the user sees
+  link.download = 'CV_Wade_Britz.pdf'; 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

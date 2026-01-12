@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "https://wadeybaby.github.io/",
+  base: "/tactical-operator-portfolio/",
   server: {
     host: "::",
     port: 8080,
