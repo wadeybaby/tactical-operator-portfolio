@@ -20,7 +20,7 @@ const AchievementsSection = () => {
       title: "Professional Experience",
       description: "Successfully completed internship and web development roles",
       icon: Briefcase,
-      year: "2023-2024",
+      year: "2024-2025",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const AchievementsSection = () => {
       title: "Project Portfolio",
       description: "Built and deployed multiple real-world applications",
       icon: Award,
-      year: "2024",
+      year: "2025",
     },
   ];
 

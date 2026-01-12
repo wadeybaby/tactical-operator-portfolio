@@ -64,7 +64,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("hero")}
               className="text-xl font-bold"
             >
-              <span className="gradient-text">Wade Britz</span>
+              <span className="gradient-text">WB</span>
             </button>
 
             {/* Desktop Navigation */}

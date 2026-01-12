@@ -36,7 +36,7 @@ const AboutSection = () => {
           </p>
           
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Currently building my skills through hands-on experience at LC Studio, I focus on writing clean, 
+            I built my skills through hands-on experience at LC Studio, I focused on writing clean, 
             maintainable code and staying current with the latest web technologies. I thrive on challenges and 
             am always eager to take on new projects that push my abilities.
           </p>

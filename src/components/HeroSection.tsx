@@ -1,41 +1,18 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import heroPortrait from "@/assets/photo-2025-05-26-08-56-34.jpg";
+import resumePDF from "@/assets/CV-Wade-Britz.pdf"
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 
 const HeroSection = () => {
   const handleDownload = () => {
-    const resumeContent = `
-WADE BRITZ
-Full-Stack Developer
-
-CONTACT:
-Email: wade.britz@example.com
-LinkedIn: linkedin.com/in/wade-britz
-GitHub: github.com/wadebritz
-
-EXPERIENCE:
-- LC Studio (Intern) - June 2024 to Present
-- Cock N Bull - December 2023 to February 2024
-
-EDUCATION:
-- Life Choices Academy - September 2023 to Present
-- Claremont High School - National Senior Certificate
-
-SKILLS:
-Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
-    `.trim();
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Wade_Britz_Resume.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
-  };
+  const link = document.createElement('a');
+  link.href = resumePDF;
+  link.download = 'Wade_Britz_Resume.pdf'; // The name the user sees
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 py-20">
@@ -55,7 +32,7 @@ Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
                 transition={{ delay: 0.2 }}
                 className="text-sm text-primary font-medium"
               >
-                Full-Stack Developer
+                Full-Stack Web Developer
               </motion.div>
               
               <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
@@ -81,7 +58,7 @@ Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
               {/* Social Links */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://github.com/wadebritz"
+                  href="https://github.com/wadeybaby"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
@@ -90,7 +67,7 @@ Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/wade-britz"
+                  href="https://linkedin.com/in/wade-britz-98a521ab/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
@@ -99,7 +76,7 @@ Python, JavaScript, HTML, CSS, Node.js, Vue.js, PHP, WordPress
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:wade.britz@example.com"
+                  href="mailto:wjoshua.britz@gmail.com"
                   className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
                   aria-label="Email"
                 >

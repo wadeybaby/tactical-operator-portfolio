@@ -61,7 +61,7 @@ const ContactSection = () => {
             Contact Me
           </h2>
           <p className="text-muted-foreground text-lg">
-            Have a project in mind? Let's work together.
+            Let's work together.
           </p>
         </motion.div>
 
@@ -106,7 +106,7 @@ const ContactSection = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me about your project..."
+                placeholder="type your message here"
                 rows={6}
                 className="bg-background resize-none"
               />

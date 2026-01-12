@@ -25,13 +25,13 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 Wade Britz. All rights reserved.
+              © 2025 Wade Britz. All rights reserved.
             </p>
             
             {/* Social Links in Footer */}
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com/wadebritz"
+                href="https://github.com/wadeybaby"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
@@ -40,7 +40,7 @@ const Index = () => {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com/in/wade-britz"
+                href="https://www.linkedin.com/in/wade-britz-98a5212ab/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
@@ -49,7 +49,7 @@ const Index = () => {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href="mailto:wade.britz@example.com"
+                href="mailto:wjoshua.britz@gmail.com"
                 className="p-2 rounded-lg bg-card hover:bg-primary/10 border border-border hover:border-primary transition-all"
                 aria-label="Email"
               >
