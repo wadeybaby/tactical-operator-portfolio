@@ -25,7 +25,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2025 Wade Britz. All rights reserved.
+              © Wade Britz. All rights reserved.
             </p>
             
             {/* Social Links in Footer */}

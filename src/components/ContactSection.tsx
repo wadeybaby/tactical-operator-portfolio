@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,9 +18,10 @@ const ContactSection = () => {
   });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // 1. Validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Missing Information",
@@ -29,12 +31,45 @@ const ContactSection = () => {
       return;
     }
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    setIsSubmitting(true);
 
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      // 2. Web3Forms API Call
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "52a8843b-abe5-4b8e-9900-434f801fcc0a",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -81,6 +116,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 placeholder="Your name"
                 className="bg-background"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -95,6 +131,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 placeholder="your.email@example.com"
                 className="bg-background"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -109,6 +146,7 @@ const ContactSection = () => {
                 placeholder="type your message here"
                 rows={6}
                 className="bg-background resize-none"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -116,9 +154,19 @@ const ContactSection = () => {
               type="submit"
               size="lg"
               className="w-full group"
+              disabled={isSubmitting}
             >
-              Send Message
-              <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {isSubmitting ? (
+                <>
+                  Sending...
+                  <Loader2 className="ml-2 w-4 h-4 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
             </Button>
           </form>
         </motion.div>
